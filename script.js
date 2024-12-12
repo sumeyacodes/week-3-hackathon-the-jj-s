@@ -4,11 +4,12 @@ async function fetchMemeApi() {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    return data;
-
+    document.getElementById
+    //return data;
 }
-fetchMemeApi();
+//fetchMemeApi();
 //make a function for displaying the meme
+
 //function for random generator button.
 //add an eventListener for the image. 
 //add an eventListener for the button.
