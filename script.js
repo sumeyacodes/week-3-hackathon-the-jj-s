@@ -4,22 +4,25 @@ const generateMemeBtn = document.getElementById("meme-button")
 
 //we need an async await function for fetching the API
 async function fetchMemeApi() {
-    const url = "https://meme-api.com/gimme";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
+    try {
+        const url = "https://meme-api.com/gimme";
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        
+            memeTitle.innerText = data.title;
+            memeImage.src = data.url;
+            memeImage.alt = data.title;
 
-    memeTitle.innerText = data.title;
-    memeImage.src = data.url;
-    memeImage.alt = data.title;
+    }
+
+    catch (error) {
+        console.error(`ERROR: ${error.message}`);
+    }
 }
 
 window.addEventListener("DOMContentLoaded", fetchMemeApi)
 generateMemeBtn.addEventListener("click", fetchMemeApi);
-
-
-
-
 
 
 //fetchMemeApi();
@@ -31,4 +34,4 @@ generateMemeBtn.addEventListener("click", fetchMemeApi);
 
 //Things to fix
     // nsfw memes still appearing randomly
-    // meme not appearing on refresh
+    // add loading page or any loading
