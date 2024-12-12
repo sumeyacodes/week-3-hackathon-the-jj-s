@@ -4,9 +4,13 @@ async function fetchMemeApi() {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    document.getElementById
+    document.getElementById("meme-title").innerText = data.title;
+    document.getElementById("meme-image").src = data.url;
+    document.getElementById("meme-image").alt = data.title;
+    
     //return data;
 }
+document.getElementById("meme-button").addEventListener("click", fetchMemeApi);
 //fetchMemeApi();
 //make a function for displaying the meme
 
