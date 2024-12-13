@@ -17,9 +17,7 @@ function getRandomSubreddit() {
     "devhumormemes",
     "programminghumor",
   ];
-
   const randomIndex = Math.floor(Math.random() * subredditsArray.length);
-
   return subredditsArray[randomIndex];
 }
 
