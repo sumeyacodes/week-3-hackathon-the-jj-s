@@ -44,15 +44,17 @@ h2 {
 }
 
 #meme-button {
-  font-family: "Source Code Pro", monospace;
   background-color: #3498db;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.4rem;
+  font: bolder;
   color: #fff;
-  font-size: 1.2rem;
   padding: 12px 24px;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
+  width: 100%;
   transition: transform 0.2s, background-color 0.3s ease;
+  cursor: pointer;
 
 }
 
@@ -91,13 +93,13 @@ h2 {
 /* -------------------Small Screens -------------------*/
 @media (max-width: 600px) {
   h1 {
-    font-size: 1.8rem; /* Smaller font for mobile */
+    font-size: 1.8rem;
   }
   h2 {
-    font-size: 1rem; /* Adjusted for small screens */
+    font-size: 1rem; 
   }
   #meme-button {
-    font-size: 1.1rem; /* Adjusted for small screens */
+    font-size: 1.1rem; 
     padding: 10px 20px;
   }
   #meme-image {
@@ -109,7 +111,7 @@ h2 {
     padding: 1rem; 
   }
   #meme-count {
-    font-size: 1rem; /* Adjusted size for better readability on mobile */
+    font-size: 1rem; 
   }
 }
 
