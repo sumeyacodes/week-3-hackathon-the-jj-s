@@ -10,7 +10,6 @@ body {
   align-items: center; 
   min-height: 100vh; 
   font-family: 'Source Code Pro', monospace;
-  overflow: hidden; 
 }
 
 header, footer {
