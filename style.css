@@ -1,30 +1,32 @@
 body {
   background-color: #f4f4f9;
-  font-family: "Source Code Pro", monospace;
   text-align: center;
   margin: 0;
   padding: 0;
   color: #2c3e50;
 }
 
+header, footer{
+  padding: 1rem;
+
+}
+
 h1 {
   font-family: "Press Start 2P", system-ui;
-  font-size: 2.5rem;
-  margin: 20px;
+  font-size: 2rem;
   color: #e74c3c;
 }
 
 h2 {
+  font-family: "Source Code Pro", monospace;
   font-weight: 400;
-  font-size: 1.2rem;
-
+  font-size: 1rem;
 }
 
 #memeinator-container {
   text-align: center;
   max-width: 800px;
   margin: auto;
-  background-color: white;
 }
 
 #meme-button {
@@ -46,25 +48,28 @@ h2 {
 }
 
 #loading {
-  font-size: 0.7rem;
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.9rem;
   color: #1f2121;
   display: none;
+  padding-bottom: 5px;
 }
 
 #meme-image {
-  max-width: 100%;
+  max-width: 80%;
   border: 5px solid #2c3e50;
   border-radius: 10px;
-  margin: 20px 0;
-  box-shadow: 0 14px 15px rgba(0, 0, 0, 0.2);
-  max-height: 400px;
+  max-height: 340px;
   object-fit: contain;
+  box-shadow: 0 14px 15spx rgba(0, 0, 0, 0.2);
 }
 
 #meme-count {
   font-family: "Press Start 2P", system-ui;
   font-size: 1rem;
   color: #8e44ad;
+  padding: 10px;
+
 }
 
 /*--------------------- Media Queries---------------- */
@@ -72,7 +77,10 @@ h2 {
 /* -------------------Small Screens -------------------*/
 @media (max-width: 600px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 0.8rem;
   }
   #meme-button {
     font-size: 0.9rem;
@@ -81,6 +89,11 @@ h2 {
   #meme-image {
     border: 3px solid #2c3e50;
   }
+
+#memeinator-container {
+  max-height: 200px;
+
+}
 }
 
 /*--------------Medium Screens--------------- */
@@ -93,7 +106,8 @@ h2 {
     padding: 10px 20px;
   }
   #memeinator-container {
-    max-width: 90%;
+    max-width: 60%;
+    max-height: 300px;
   }
 }
 
@@ -104,10 +118,6 @@ h2 {
     font-size: 3rem;
   }
   #meme-button {
-    font-size: 1.2rem;
     padding: 12px 24px;
-  }
-  #memeinator-container {
-    max-width: 800px;
   }
 }
