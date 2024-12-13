@@ -6,19 +6,20 @@
     <link rel="stylesheet" href="style.css" />
     <title>Meme Generator</title>
     <script src="script.js" defer></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>The Memeinator</h1>
-    <button id="meme-button">Meme me!</button>
-    <p id="loading">Loading meme...</p>
-    <div id="meme-container">
-      <h3 id="meme-title"></h3>
+    <header>
+      <h1>The Memeinator</h1>
+      <h2 id="meme-title"></h2>
+    </header>
+    <main id="meme-container">
+      <span id="loading">Loading meme...</span>
       <img id="meme-image" alt="meme-appear-here" />
+    </main>
+    <footer>
+      <button id="meme-button">Meme me!</button>
       <p id="meme-count">Memes Generated: 0</p>
-    </div>
+    </footer>
   </body>
 </html>
