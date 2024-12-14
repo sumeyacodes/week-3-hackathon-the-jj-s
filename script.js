@@ -21,6 +21,9 @@ function getRandomSubreddit() {
   return subredditsArray[randomIndex];
 }
 
+let seenMemes = [];
+
+
 //Function for fetching the API
 async function fetchMemeAPI() {
   try {
@@ -38,12 +41,10 @@ async function fetchMemeAPI() {
     // Filtering out nsfw memes
     if (data.nsfw) {
       console.log("nsfw found");
-      fetchMemeAPI();
-      return;
+      return fetchMemeAPI()
     }
 
-    //filtering out null/undefined titles
-    if (!data.title || data.title.trim() === "" || !data.url) {
+    if (!data.title || !data.url) {
       console.log(
         "Meme with undefined or empty title/url found. Fetching another..."
       );
@@ -51,6 +52,7 @@ async function fetchMemeAPI() {
     }
 
     return data;
+
   } catch (error) {
     //Handing error cases
     console.error(`ERROR: ${error.message}`);
@@ -62,6 +64,8 @@ async function fetchMemeAPI() {
     loadingIndicator.style.display = "none";
   }
 }
+
+
 
 //Function for updating DOM
 function displayMeme(memeData) {
@@ -77,8 +81,28 @@ function displayMeme(memeData) {
 
 //Function to pass api data to display meme function
 async function generateAndDisplayNewMeme() {
-  const memeData = await fetchMemeAPI();
+  const memeData = await fetchMemeAPI()
+
+  //Find repeated meme in seenMemes array
+ let repatedMeme = seenMemes.find(url => url === memeData.url);
+
+ //If found a repeated meme, trigger function get new meme
+ if (repatedMeme) {
+   console.log("Meme retrieved:", memeData.url); 
+   console.log("Repeated meme found:", repatedMeme); 
+   console.log("Memes Seen so far:", seenMemes);
+   console.log("Skipping this meme and fetching a new one...");
+   generateAndDisplayNewMeme();
+   return;
+ }
+
+  // Add new URL to seenMemes array
+  seenMemes.push(memeData.url);
+  console.log("New meme added to seenMemes:", memeData.url);
+
+  // Display the new meme
   displayMeme(memeData);
+  console.log("FALSE: Displaying new meme:", memeData.url);
 }
 
 //To display meme when page is refreshed
