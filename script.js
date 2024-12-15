@@ -10,26 +10,38 @@ let generatedMemeCount = 0;
 let memeCount = 0;
 
 
+
 // Retrieve memes from local storage and store in seen memes array, if nothing initialise new array
 let seenMemes = JSON.parse(localStorage.getItem('seenMemes')) || [];
 let prefetchedMemes = [];
 
+//initialising variables for subreddit function
+let nextSubreddit = false;
+let subIndex = 0;
+
+console.log(subIndex)
 
 
 
 // ** COMMENTED OUT FOR NOW TO TEST FUNCTIONS WITH JUST ONE SUBREDDIT ** //
-//Get a random subreddit from array to get meme from
-// function getRandomSubreddit() {
-//   const subredditsArray = [
-//     "ProgrammerHumour",
-//     "programmingmemes",
-//     " codingmemes",
-//     "devhumormemes",
-//     "programminghumor",
-//   ];
-//   const randomIndex = Math.floor(Math.random() * subredditsArray.length);
-//   return subredditsArray[randomIndex];
-// }
+// Get a random subreddit from array to get meme 
+function getSubreddit(nextSubreddit) {
+  
+  const subredditsArray = [
+    "ProgrammerHumour",
+    "programmingmemes",
+    " codingmemes",
+    "devhumormemes",
+    "programminghumor",
+  ];
+
+  if (nextSubreddit){
+    subIndex++
+    console.log(subIndex)
+    nextSubreddit = false
+  }
+  return subredditsArray[subIndex];
+}
 
 //Function for fetching the API
 async function fetchMemeAPI(amountLeftToFetch) {
@@ -38,8 +50,8 @@ async function fetchMemeAPI(amountLeftToFetch) {
     loadingIndicator.style.display = "block";
 
     //Get random subreddit
-    const subreddit =  "codingmemes"
-
+    const subreddit =  getSubreddit()
+    console.log(subreddit)
     // Meme count to pass in as query
     memeCount = amountLeftToFetch
 
@@ -119,9 +131,11 @@ async function prefetchData() {
     // Return the meme to be displayed
     return memeToDisplay;
   } else {
-    console.log("There are no more new memes, get a life")
-    memeTitle.innerText =  "User needs to touch grass"
-    memeCountDisplay.innerText = "There are no more new memes, get a life"
+    nextSubreddit = true
+    getSubreddit(nextSubreddit)
+    console.log("There are no more new memes, get a life");
+    memeTitle.innerText =  "User needs to touch grass";
+    memeCountDisplay.innerText = "There are no more new memes, get a life";
   }
 }
 
